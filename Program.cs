@@ -18,19 +18,37 @@ namespace Algorithms
         }
         static void Main(string[] args)
         {
-            Execute(new ISortAlgorithm[] { new BubbleSort(), new InsertionSort() }, provider);
+            Execute(new ISortAlgorithm[] 
+            {
+                new BubbleSort(),
+                new InsertionSort(),
+                new SelectionSort(),
+                new MergeSort()
+            }, 
+            provider);
         }
 
         static void Execute(IEnumerable<ISortAlgorithm> algorithms, DataProvider provider)
         {
-            var data = provider.Provide(100).ToArray();
+            var data = provider.Provide(10000).ToArray();
+            Task[] tasks = new Task[algorithms.Count()];
+            var idx = 0;
             foreach (var item in algorithms)
             {
-                executor.Execute(item, data);
+                tasks[idx] = executor.Execute(item, data);
+                tasks[idx].Start();
+                idx++;
             }
-            var key = Console.ReadKey();
-            if (key.Key != ConsoleKey.Escape)
+            Task.WaitAll(tasks);
+            Console.WriteLine("all completed");
+
+            var str = Console.ReadLine();
+            if (str != "exit")
+            {
+                Console.WriteLine("***************");
                 Execute(algorithms, provider);
+            }
+            
         }
     }
 }

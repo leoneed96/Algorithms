@@ -9,7 +9,7 @@ namespace Algorithms.Sorting
     public interface ISortAlgorithm
     {
         string Title { get; }
-        int Iterations { get; set; }
-        IEnumerable<int> Sort(IEnumerable<int> data);
+        TimeSpan TimeSpan { get; set; }
+        int[] Sort(int[] data);
     }
 }

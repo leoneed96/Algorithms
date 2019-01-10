@@ -9,24 +9,17 @@ namespace Algorithms
 {
     public class Executor
     {
-        public void Execute(ISortAlgorithm algorithm, IEnumerable<int> data)
+        public Task Execute(ISortAlgorithm algorithm, int[] data)
         {
-            Console.WriteLine($"*** Algorithm:{algorithm.Title} ***");
-            Console.WriteLine("Unsorted:");
-            foreach (var item in data)
-            {
-                Console.Write(item + ", ");
-            }
-            var sorted = algorithm.Sort(data);
-            Console.WriteLine();
-            Console.WriteLine("Sorted:");
-            foreach (var item in sorted)
-            {
-                Console.Write(item + ", ");
-            }
-            Console.WriteLine();
-            Console.WriteLine($"Iterations: {algorithm.Iterations}");
-            Console.WriteLine();
+            var forTask = new int[data.Length];
+            Array.Copy(data, forTask, data.Length);
+
+            return new Task(() =>
+           {
+               var sorted = algorithm.Sort(forTask);
+               Console.WriteLine($"*** Algorithm:{algorithm.Title} completed in {algorithm.TimeSpan.TotalMilliseconds} ms ***");
+           });
+            
         }
     }
 }

@@ -6,35 +6,33 @@ using System.Threading.Tasks;
 
 namespace Algorithms.Sorting
 {
-    public class BubbleSort : ISortAlgorithm
+    public class BubbleSort : BaseSortAlgorithm, ISortAlgorithm
     {
-        public string Title => "Bubble sort";
+        public override string Title => "Bubble sort";
 
-        public int Iterations { get; set; } = 0;
-
-        public IEnumerable<int> Sort(IEnumerable<int> data)
+        public override int[] Sort(int[] data)
         {
-            Iterations = 0;
-            var arr = data.ToArray();
+            var start = DateTime.Now;
             bool isSorted = true;
             do
             {
                 isSorted = true;
-                for (int i = 0; i < arr.Length - 1; i++)
+                for (int i = 0; i < data.Length - 1; i++)
                 {
-                    if (arr[i] > arr[i + 1])
+                    if (data[i] > data[i + 1])
                     {
-                        var next = arr[i + 1];
-                        arr[i + 1] = arr[i];
-                        arr[i] = next;
+                        var next = data[i + 1];
+                        data[i + 1] = data[i];
+                        data[i] = next;
                         isSorted = false;
                     }
-                    arr[i + 1] = arr[i + 1] > arr[i] ? arr[i + 1] : arr[i];
-                    Iterations++;
+                    data[i + 1] = data[i + 1] > data[i] ? data[i + 1] : data[i];
                 }
             }
             while (isSorted == false);
-            return arr;
+            TimeSpan = DateTime.Now - start;
+            CheckSorted(data);
+            return data;
         }
     }
 }
