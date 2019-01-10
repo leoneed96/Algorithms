@@ -23,14 +23,15 @@ namespace Algorithms
                 new BubbleSort(),
                 new InsertionSort(),
                 new SelectionSort(),
-                new MergeSort()
+                new MergeSort(),
+                new QuickSort()
             }, 
             provider);
         }
 
         static void Execute(IEnumerable<ISortAlgorithm> algorithms, DataProvider provider)
         {
-            var data = provider.Provide(10000).ToArray();
+            var data = provider.Provide(10).ToArray();
             Task[] tasks = new Task[algorithms.Count()];
             var idx = 0;
             foreach (var item in algorithms)
