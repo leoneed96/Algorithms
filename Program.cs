@@ -18,15 +18,15 @@ namespace Algorithms
         }
         static void Main(string[] args)
         {
-            Execute(new ISortAlgorithm[] 
-            {
-                new BubbleSort(),
-                new InsertionSort(),
-                new SelectionSort(),
-                new MergeSort(),
-                new QuickSort()
-            }, 
-            provider);
+            //Execute(new ISortAlgorithm[] 
+            //{
+            //    new BubbleSort(),
+            //    new InsertionSort(),
+            //    new SelectionSort(),
+            //    new MergeSort(),
+            //    new QuickSort()
+            //}, 
+            //provider);
         }
 
         static void Execute(IEnumerable<ISortAlgorithm> algorithms, DataProvider provider)

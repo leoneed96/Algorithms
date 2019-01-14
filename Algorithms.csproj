@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryTrees\Model\BinaryTree.cs" />
+    <Compile Include="BinaryTrees\Model\TreeNode.cs" />
+    <Compile Include="BinaryTrees\Traversing\IBinaryTreeTraversal.cs" />
+    <Compile Include="BinaryTrees\Traversing\InOrderTraversal.cs" />
+    <Compile Include="BinaryTrees\Traversing\PostOrderTraversal.cs" />
+    <Compile Include="BinaryTrees\Traversing\PreOrderTraversal.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="Executor.cs" />
     <Compile Include="Program.cs" />
@@ -58,5 +64,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
